@@ -26,9 +26,10 @@ export default function ConnectPage() {
       });
     } catch (e) {}
     setLoading(false);
-    setSubmitted(true);
     if (callback) {
-      setTimeout(() => { window.location.href = callback; }, 2000);
+      window.location.href = callback;
+    } else {
+      setSubmitted(true);
     }
   };
 
