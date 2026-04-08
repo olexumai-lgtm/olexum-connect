@@ -25,12 +25,12 @@ export default function ConnectPage() {
         body: JSON.stringify({ api_key: apiKey, call_forwarding_confirmed: true, email })
       });
     } catch (e) {}
-    setLoading(false);
     if (callback) {
       window.location.href = callback;
-    } else {
-      setSubmitted(true);
+      return;
     }
+    setLoading(false);
+    setSubmitted(true);
   };
 
   if (submitted) {
