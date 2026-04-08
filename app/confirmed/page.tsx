@@ -21,7 +21,7 @@ export default function ConfirmedPage() {
 
           <h1 style={styles.title}>Setup confirmed.</h1>
           <p style={styles.subtitle}>
-            We have everything we need. Our team is now building your MedFlow System — you&apos;ll be notified as soon as it&apos;s live.
+            We have everything we need. Our team is building your MedFlow System — you&apos;ll be notified as soon as it&apos;s live.
           </p>
 
           <div style={styles.divider} />
@@ -100,6 +100,8 @@ const styles: { [key: string]: React.CSSProperties } = {
   },
   successIcon: {
     marginBottom: 20,
+    display: "flex",
+    justifyContent: "center",
   },
   title: {
     fontSize: 24,
