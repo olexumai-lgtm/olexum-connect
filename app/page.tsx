@@ -15,18 +15,21 @@ export default function ConnectPage() {
   const handleSubmit = async () => {
     if (!canSubmit) return;
     setLoading(true);
-    // Replace with your GHL webhook URL
-    // const params = new URLSearchParams(window.location.search);
-    // const email = params.get("email");
-    // await fetch("YOUR_GHL_WEBHOOK_URL", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify({ api_key: apiKey, call_forwarding_confirmed: true, email })
-    // });
-    setTimeout(() => {
-      setLoading(false);
-      setSubmitted(true);
-    }, 1500);
+    const params = new URLSearchParams(window.location.search);
+    const email = params.get("email");
+    const callback = params.get("callback");
+    try {
+      await fetch("https://services.leadconnectorhq.com/hooks/izlvqiZqnG5l78hl9hlb/webhook-trigger/cc3409d2-819f-40f8-97b6-14fa52e08498", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ api_key: apiKey, call_forwarding_confirmed: true, email })
+      });
+    } catch (e) {}
+    setLoading(false);
+    setSubmitted(true);
+    if (callback) {
+      setTimeout(() => { window.location.href = callback; }, 2000);
+    }
   };
 
   if (submitted) {
